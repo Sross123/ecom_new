@@ -7,7 +7,7 @@ function classNames(...classes) {
 }
 
 const TabPanel = ({TabPanelOption, productData}) => {
-  
+  console.log("================================", productData)
   return (
     <div className="w-full px-2 sm:px-0">
       <Tab.Group>

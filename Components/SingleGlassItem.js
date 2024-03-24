@@ -32,11 +32,11 @@ const SingleGlassItem = ({value}) => {
 						</div>
 						<div className="col-span-1 flex flex-col items-center justify-center">
 							<span className="text-base font-semibold tracking-wider">
-                                        {productData?.glasses_size === "1"
+                                        {value?.size === "1"
                                             ? "Small"
-                                            : productData?.glasses_size === "2"
+                                            : value?.size === "2"
                                                 ? "Medium"
-                                                : productData?.glasses_size === "3"
+                                                : value?.size === "3"
                                                     ? "Large"
                                                     : "Unknown"}
 							</span>

@@ -20,7 +20,7 @@ import { colorMapping } from "@/utils/constant/constant";
 const TabPanelOption = [
     { label: "SPECIFICATION", component: Specification },
     { label: "DESCRIPTION", component: Description },
-    { label: "WRITE REVIEW", component: WriteReview },
+    // { label: "WRITE REVIEW", component: WriteReview },
     { label: "PRODUCTS TAGS", component: ProductTag },
 ]
 
@@ -48,7 +48,7 @@ const SingleProduct = () => {
             const fetchProductData = async () => {
                 try {
                     const res = await axios.get(
-                        `${BASE_URL}products/${id}`
+                        `https://api.akkukachasma.com/api/products/${id}`
                     );
                     console.log(res?.data);
                     setProductdata(res?.data);
@@ -199,7 +199,7 @@ const SingleProduct = () => {
 
                 <div className="h-[35rem] grid grid-cols-7 gap-2">
                     <div className="col-span-5 shadow-md pr-2">
-                        <TabPanel TabPanelOption={TabPanelOption} TableData={productData} />
+                        <TabPanel TabPanelOption={TabPanelOption} productData={productData} />
                     </div>
                     <div className="col-span-2">
                         Images
