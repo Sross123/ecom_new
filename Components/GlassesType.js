@@ -11,7 +11,6 @@ const GlassesType = () => {
     const handleNavigate = (item) => {
         router.push(`${item?.name?.toLowerCase()}`);
     };
-    console.log(categoryItems, 'categoryItems')
     return (
         <motion.div className='w-full flex items-center gap-5 mt-6 justify-between cursor-pointer'>
             {

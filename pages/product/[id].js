@@ -20,7 +20,7 @@ import { colorMapping } from "@/utils/constant/constant";
 const TabPanelOption = [
     { label: "SPECIFICATION", component: Specification },
     { label: "DESCRIPTION", component: Description },
-    // { label: "WRITE REVIEW", component: WriteReview },
+    { label: "WRITE REVIEW", component: WriteReview },
     { label: "PRODUCTS TAGS", component: ProductTag },
 ]
 
