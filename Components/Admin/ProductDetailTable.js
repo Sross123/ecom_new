@@ -1,38 +1,12 @@
+'use client'
 import React from 'react'
-import {TbEdit} from "react-icons/tb"
-import {MdDelete} from "react-icons/md"
+import { TbEdit } from "react-icons/tb"
+import { MdDelete } from "react-icons/md"
+import useGetAllProducts from '@/utils/queries/useProductDetail'
 
-const data = [
-    {SNo:1,InStock:"In Stock",Quantity:10,Categories:"Rounded",Brand:"Mine",ModalNumber:1241,Price:230,Shape:"Rounded",FrameMaterial:"Metal",FrameWidth:23,LensWidth:10,LensHeight:9,Color:"Blue"},
-    {SNo:1,InStock:"In Stock",Quantity:10,Categories:"Rounded",Brand:"Mine",ModalNumber:1241,Price:230,Shape:"Rounded",FrameMaterial:"Metal",FrameWidth:23,LensWidth:10,LensHeight:9,Color:"Blue"},
-    {SNo:1,InStock:"In Stock",Quantity:10,Categories:"Rounded",Brand:"Mine",ModalNumber:1241,Price:230,Shape:"Rounded",FrameMaterial:"Metal",FrameWidth:23,LensWidth:10,LensHeight:9,Color:"Blue"},
-    {SNo:1,InStock:"In Stock",Quantity:10,Categories:"Rounded",Brand:"Mine",ModalNumber:1241,Price:230,Shape:"Rounded",FrameMaterial:"Metal",FrameWidth:23,LensWidth:10,LensHeight:9,Color:"Blue"},
-    {SNo:1,InStock:"In Stock",Quantity:10,Categories:"Rounded",Brand:"Mine",ModalNumber:1241,Price:230,Shape:"Rounded",FrameMaterial:"Metal",FrameWidth:23,LensWidth:10,LensHeight:9,Color:"Blue"},
-    {SNo:1,InStock:"In Stock",Quantity:10,Categories:"Rounded",Brand:"Mine",ModalNumber:1241,Price:230,Shape:"Rounded",FrameMaterial:"Metal",FrameWidth:23,LensWidth:10,LensHeight:9,Color:"Blue"},
-    {SNo:1,InStock:"In Stock",Quantity:10,Categories:"Rounded",Brand:"Mine",ModalNumber:1241,Price:230,Shape:"Rounded",FrameMaterial:"Metal",FrameWidth:23,LensWidth:10,LensHeight:9,Color:"Blue"},
-    {SNo:1,InStock:"In Stock",Quantity:10,Categories:"Rounded",Brand:"Mine",ModalNumber:1241,Price:230,Shape:"Rounded",FrameMaterial:"Metal",FrameWidth:23,LensWidth:10,LensHeight:9,Color:"Blue"},
-    {SNo:1,InStock:"In Stock",Quantity:10,Categories:"Rounded",Brand:"Mine",ModalNumber:1241,Price:230,Shape:"Rounded",FrameMaterial:"Metal",FrameWidth:23,LensWidth:10,LensHeight:9,Color:"Blue"},
-    {SNo:1,InStock:"In Stock",Quantity:10,Categories:"Rounded",Brand:"Mine",ModalNumber:1241,Price:230,Shape:"Rounded",FrameMaterial:"Metal",FrameWidth:23,LensWidth:10,LensHeight:9,Color:"Blue"},
-    {SNo:1,InStock:"In Stock",Quantity:10,Categories:"Rounded",Brand:"Mine",ModalNumber:1241,Price:230,Shape:"Rounded",FrameMaterial:"Metal",FrameWidth:23,LensWidth:10,LensHeight:9,Color:"Blue"},
-    {SNo:1,InStock:"In Stock",Quantity:10,Categories:"Rounded",Brand:"Mine",ModalNumber:1241,Price:230,Shape:"Rounded",FrameMaterial:"Metal",FrameWidth:23,LensWidth:10,LensHeight:9,Color:"Blue"},
-    {SNo:1,InStock:"In Stock",Quantity:10,Categories:"Rounded",Brand:"Mine",ModalNumber:1241,Price:230,Shape:"Rounded",FrameMaterial:"Metal",FrameWidth:23,LensWidth:10,LensHeight:9,Color:"Blue"},
-    {SNo:1,InStock:"In Stock",Quantity:10,Categories:"Rounded",Brand:"Mine",ModalNumber:1241,Price:230,Shape:"Rounded",FrameMaterial:"Metal",FrameWidth:23,LensWidth:10,LensHeight:9,Color:"Blue"},
-    {SNo:1,InStock:"In Stock",Quantity:10,Categories:"Rounded",Brand:"Mine",ModalNumber:1241,Price:230,Shape:"Rounded",FrameMaterial:"Metal",FrameWidth:23,LensWidth:10,LensHeight:9,Color:"Blue"},
-    {SNo:1,InStock:"In Stock",Quantity:10,Categories:"Rounded",Brand:"Mine",ModalNumber:1241,Price:230,Shape:"Rounded",FrameMaterial:"Metal",FrameWidth:23,LensWidth:10,LensHeight:9,Color:"Blue"},
-    {SNo:1,InStock:"In Stock",Quantity:10,Categories:"Rounded",Brand:"Mine",ModalNumber:1241,Price:230,Shape:"Rounded",FrameMaterial:"Metal",FrameWidth:23,LensWidth:10,LensHeight:9,Color:"Blue"},
-    {SNo:1,InStock:"In Stock",Quantity:10,Categories:"Rounded",Brand:"Mine",ModalNumber:1241,Price:230,Shape:"Rounded",FrameMaterial:"Metal",FrameWidth:23,LensWidth:10,LensHeight:9,Color:"Blue"},
-    {SNo:1,InStock:"In Stock",Quantity:10,Categories:"Rounded",Brand:"Mine",ModalNumber:1241,Price:230,Shape:"Rounded",FrameMaterial:"Metal",FrameWidth:23,LensWidth:10,LensHeight:9,Color:"Blue"},
-    {SNo:1,InStock:"In Stock",Quantity:10,Categories:"Rounded",Brand:"Mine",ModalNumber:1241,Price:230,Shape:"Rounded",FrameMaterial:"Metal",FrameWidth:23,LensWidth:10,LensHeight:9,Color:"Blue"},
-    {SNo:1,InStock:"In Stock",Quantity:10,Categories:"Rounded",Brand:"Mine",ModalNumber:1241,Price:230,Shape:"Rounded",FrameMaterial:"Metal",FrameWidth:23,LensWidth:10,LensHeight:9,Color:"Blue"},
-    {SNo:1,InStock:"In Stock",Quantity:10,Categories:"Rounded",Brand:"Mine",ModalNumber:1241,Price:230,Shape:"Rounded",FrameMaterial:"Metal",FrameWidth:23,LensWidth:10,LensHeight:9,Color:"Blue"},
-    {SNo:1,InStock:"In Stock",Quantity:10,Categories:"Rounded",Brand:"Mine",ModalNumber:1241,Price:230,Shape:"Rounded",FrameMaterial:"Metal",FrameWidth:23,LensWidth:10,LensHeight:9,Color:"Blue"},
-    {SNo:1,InStock:"In Stock",Quantity:10,Categories:"Rounded",Brand:"Mine",ModalNumber:1241,Price:230,Shape:"Rounded",FrameMaterial:"Metal",FrameWidth:23,LensWidth:10,LensHeight:9,Color:"Blue"},
-    {SNo:1,InStock:"In Stock",Quantity:10,Categories:"Rounded",Brand:"Mine",ModalNumber:1241,Price:230,Shape:"Rounded",FrameMaterial:"Metal",FrameWidth:23,LensWidth:10,LensHeight:9,Color:"Blue"},
-    {SNo:1,InStock:"In Stock",Quantity:10,Categories:"Rounded",Brand:"Mine",ModalNumber:1241,Price:230,Shape:"Rounded",FrameMaterial:"Metal",FrameWidth:23,LensWidth:10,LensHeight:9,Color:"Blue"},
-    {SNo:1,InStock:"In Stock",Quantity:10,Categories:"Rounded",Brand:"Mine",ModalNumber:1241,Price:230,Shape:"Rounded",FrameMaterial:"Metal",FrameWidth:23,LensWidth:10,LensHeight:9,Color:"Blue"},
-    {SNo:1,InStock:"In Stock",Quantity:10,Categories:"Rounded",Brand:"Mine",ModalNumber:1241,Price:230,Shape:"Rounded",FrameMaterial:"Metal",FrameWidth:23,LensWidth:10,LensHeight:9,Color:"Blue"},
-]
 const ProductDetailTable = () => {
+  const {data} = useGetAllProducts();
+  console.log(data, 'ProductDetailTable')
   return (
     <div className='w-full tracking-wide h-[69vh] overflow-y-scroll scrollbar-hide border shadow-md'>
       <table className="table-auto w-full relative">
@@ -57,7 +31,7 @@ const ProductDetailTable = () => {
         </thead>
         <tbody className='text-xs text-gray-600 text-center overflow-scroll'>
           {
-            data.map((data,index)=>(
+            data && data.map((data,index)=>(
               <tr className='' key={index}>
             <td className="py-2 border">{data.SNo}</td>
             <td className="py-2 border">
@@ -81,7 +55,6 @@ const ProductDetailTable = () => {
           </tr>
             ))
           }
-          
         </tbody>
       </table>
     </div>

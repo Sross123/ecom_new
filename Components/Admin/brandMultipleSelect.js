@@ -33,7 +33,7 @@ export default function SingleSelectBrands({ label, options ,register,name}) {
 
   return (
     <div>
-      <FormControl sx={{ width: 298 }} size="small">
+      <FormControl sx={{ width: '100%' }} size="small">
         <InputLabel id={label}>{label}</InputLabel>
         <Select
           {...register(name)}

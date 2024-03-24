@@ -43,12 +43,12 @@ const ProductDetailDialog = ({ onCancel }) => {
     console.log(data)
   }
   return (
-    <div className="relative border tracking-wide space-y-5 rounded-md shadow-lg h-[calc(100%-1rem)] max-h-full">
+    <div className="relative border-2 tracking-wide rounded-md shadow-lg h-[20%]">
       <h1 className="text-md font-semibold text-center text-gray-700 mt-3">
         Add Products Detail
       </h1>
       <form
-        className="flex flex-col items-center justify-between gap-6 px-6 pb-6"
+        className="flex flex-col items-center justify-between gap-6 px-4 py-4"
         onSubmit={handleSubmit(onSubmit)}
       >
         <div className="grid grid-cols-2 items-center justify-between gap-3">
@@ -58,12 +58,12 @@ const ProductDetailDialog = ({ onCancel }) => {
           <TextField fullWidth label="Model number" name="product_model_number" id="product_model_number"  {...register("product_model_number")} sx={{ minWidth: 300 }} />
           <TextField fullWidth label="Capacity" name="capacity" id="capacity"  {...register("capacity")} sx={{ minWidth: 300 }} />
           <TextField fullWidth label="Use For" name="use_for" id="use_for"  {...register("use_for")} sx={{ minWidth: 300 }} />
-          <SingleSelectCategories label="Product Categories Name" options={categories} register={register} name='productCategoriesId' />
+          <SingleSelectCategories label="Product Categories Name" options={categories} register={register} name='productCategoriesId'/>
           <SingleSelectBrands label="Brand Name" options={brand} register={register} name='productBrandId' />
           <SingleSelectPowerType label="Select Power" options={powerType} register={register} name="show_lens_list" />
           <SingleSelectColor label='Select Color' options={color} register={register} name='product_color' />
           <SingleSelectShape label='Select shape' options={shape} register={register} name='shape' />
-          <SingleSelectUniversal size='md' label='Select Style' options={style} register={register} name='style' />
+          <SingleSelectUniversal label='Select Style' options={style} register={register} name='style' />
           <SingleSelectUniversal label='Select size' options={size} register={register} name='warranty' />
           <SingleSelectMaterial label='Select material' options={material} register={register} name='material' />
           <SingleSelectSize label='Select Size' options={size} register={register} name='size' />
@@ -71,7 +71,7 @@ const ProductDetailDialog = ({ onCancel }) => {
           <SingleSelectUniversal label='Select Warranty' options={[true, false]} register={register} name='warranty' />
           <div><TextField
             disabled
-            className="w-[300px]"
+            className="w-[100%]"
             id="" label="Lens Material"
             defaultValue="Demo Polycarbonate"
             InputProps={{
@@ -82,7 +82,7 @@ const ProductDetailDialog = ({ onCancel }) => {
           </div>
           <div><TextField
             disabled
-            className="w-[300px]"
+            className="w-[100%]"
             id="" label="Raw Material Sourced from"
             defaultValue="Imported [International]"
             InputProps={{
@@ -102,7 +102,6 @@ const ProductDetailDialog = ({ onCancel }) => {
           <TextField fullWidth label="Temple length" name="temple_length" id="temple_length" size="small" {...register("temple_length")} sx={{ minWidth: 300 }} />
           <div className='w-[85%]'><Textarea label="Description" className='col-span-3' {...register('product_description')} /></div>
         </div>
-
         <button
           type="submit"
           className="text-white bg-sky-400 hover:bg-sky-500  focus:outline-none font-medium rounded-lg text-sm inline-flex items-center px-5 py-2 text-center mr-2"

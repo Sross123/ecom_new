@@ -33,7 +33,7 @@ export default function SingleSelectUniversal({ label, options ,register,name,si
 
   return (
     <div>
-        <FormControl sx={{ width: 300 }} size={size}>
+        <FormControl sx={{ width: '100%' }} size={size}>
           <InputLabel id={label}>{label}</InputLabel>
           <Select
             {...register(name)}

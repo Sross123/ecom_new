@@ -3,7 +3,7 @@ import ProductDetailDialog from "@/Components/Dialog/productDetails";
 import AdminLayout from "@/Layout/AdminLayout";
 import IconButton from "@/Components/Admin/IconButton";
 import Modal from "@/Components/Dialog/Modal";
-import {  InputAdornment, TextField } from "@mui/material";
+import { InputAdornment, TextField } from "@mui/material";
 import { MdOutlineLensBlur } from "react-icons/md";
 import React, { useState } from "react";
 import { BiSearch } from "react-icons/bi";
@@ -15,11 +15,11 @@ const ProductDetail = () => {
   const onHide = () => setOpen(false);
   return (
     <AdminLayout>
-       <Modal isOpen={open} closeModal={onHide} fullWidth={false}>
-        {<ProductDetailDialog onCancel={onHide} />}
+      <Modal isOpen={open} closeModal={onHide} fullWidth={false}>
+        <ProductDetailDialog onCancel={onHide} />
       </Modal>
       <div>
-         <div>
+        <div>
           <span onClick={handleOpen}>
             <IconButton label="Add product details" icon={<MdOutlineLensBlur />} />
           </span>
@@ -30,15 +30,15 @@ const ProductDetail = () => {
               All Product Detail
             </span>
             <div className="flex items-center space-x-5">
-                <TextField
-                    className="outline-none focus:ring-0 w-24"
-                    sx={{}}
-                    color="warning"
-                    size="small"
-                    label="Show"
-                    type="number"
-                  />
-            
+              <TextField
+                className="outline-none focus:ring-0 w-24"
+                sx={{}}
+                color="warning"
+                size="small"
+                label="Show"
+                type="number"
+              />
+
               <TextField
                 className="outline-none focus:ring-0 w-40"
                 sx={{}}
@@ -55,7 +55,7 @@ const ProductDetail = () => {
                   ),
                 }}
               />
-            
+
             </div>
           </div>
           <div className="mt-2">

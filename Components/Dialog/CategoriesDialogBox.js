@@ -8,23 +8,22 @@ import useCreateCategories from "@/utils/mutations/useCreateCategories";
 import { LocalActivityTwoTone } from "@mui/icons-material";
 import Loader from "../Loader";
 
-const CategoriesDialogBox = ({ onCancel, setOpen }) => {
-  const dispatch = useDispatch();
-  const { register, handleSubmit } = useForm();
-  const { mutate, isPending, isError } = useCreateCategories();
-  const onSubmit = async (data) => {
-    const formData = new FormData();
-    formData.append("data", JSON.stringify({ name: data.name }));
-    formData.append("file", data.file[0]);
-    console.log(data);
-    setOpen(false);
-    await mutate(formData);
-  };
-  if (isPending) {
-    return <Loader />;
+const CategoriesDialogBox = ({ onCancel }) => {
+    const dispatch = useDispatch()
+    const { register, handleSubmit} = useForm();
+    const {mutate, isPending, isError, isSuccess, error} = useCreateCategories()  
+  const onSubmit = (data)=>{
+    const formData = new FormData()
+    formData.append('data',JSON.stringify({'name':data.name}))
+    formData.append('file', data.file[0])
+    console.log(data)
+    mutate(formData)
+}
+  if(isPending && !isError && !isSuccess){
+    return <Loader/>
   }
-  if (isError) {
-    return <>Error occurred</>;
+  if(isError){
+    return <>Error occurred {error}</>
   }
   return (
     <div className="relative border p-2 tracking-wide space-y-5 rounded-md shadow-lg h-[calc(100%-1rem)] max-h-full">

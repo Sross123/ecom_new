@@ -1,5 +1,6 @@
 import DashboardSingleItem from '@/Components/Admin/DashboardSingleItem'
 import AdminLayout from '@/Layout/AdminLayout'
+import useGetAllCategories from '@/utils/queries/useCategoriesGetAll'
 import React from 'react'
 
 const items = [
@@ -12,6 +13,8 @@ const items = [
     {color:"bg-indigo-300",title : "Total Enquiry" , number : 11025 , src : "/questions.png"},
 ]
 const dashboard = () => {
+    const {data, isLoading} = useGetAllCategories();
+    console.log(data)
   return (
     <AdminLayout>
         <div className='space-y-6'>
