@@ -8,14 +8,14 @@ import Loader from '@/Components/Loader';
 
 
 const Index = () => {
-
-
   const router = useRouter();
 
   const navigateToSingleProduct = (id) => {
     router.push(`/product/${id}`);
   };
-  const {isLoading , isError , data }=  useGetAllProducts()
+
+  const {isLoading , isError , data }=  useGetAllProducts();
+  
   if(isLoading){
     return <><Loader/></>
  }

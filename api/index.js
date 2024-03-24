@@ -3,7 +3,7 @@ import axios from "axios";
 // import { toast } from "react-toastify"
 
 let token;
-export const baseURL = "http://194.163.34.72:5000/api/"
+export const baseURL = "https://api.akkukachasma.com/api/"
 
 export const Imageapi = axios.create({
   // withCredentials: true,

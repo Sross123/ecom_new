@@ -3,7 +3,7 @@ import SlideOnHover from "./Swiper/SlideOnHover";
 import { IoIosShareAlt } from "react-icons/io";
 
 const SingleGlassItem = ({value}) => {
-	const imageArray = value?.product_images.split(',')
+	const imageArray = value?.product_images.split(',');
 	return (
 		<div className="hover:shadow-xl rounded-md">
 			<div className="relative space-y-3">
@@ -16,7 +16,7 @@ const SingleGlassItem = ({value}) => {
 					<div className="grid grid-cols-4 items-center justify-center gap-5">
 						<div className="col-span-1 flex flex-col items-center justify-between">
 							<span className="text-base font-semibold tracking-wider">
-								135 <span className="text-xs">MM</span>
+								{value?.frame_width} <span className="text-xs">MM</span>
 							</span>
 							<span className="text-xs text-gray-500 tracking-wider">
 								FrameWidth
@@ -32,7 +32,13 @@ const SingleGlassItem = ({value}) => {
 						</div>
 						<div className="col-span-1 flex flex-col items-center justify-center">
 							<span className="text-base font-semibold tracking-wider">
-								Medium
+                                        {productData?.glasses_size === "1"
+                                            ? "Small"
+                                            : productData?.glasses_size === "2"
+                                                ? "Medium"
+                                                : productData?.glasses_size === "3"
+                                                    ? "Large"
+                                                    : "Unknown"}
 							</span>
 							<span className="text-xs text-gray-500 tracking-wider">
 								FrameSize
@@ -40,7 +46,7 @@ const SingleGlassItem = ({value}) => {
 						</div>
 						<div className="col-span-1 flex flex-col items-center justify-center">
 							<span className="text-lg font-bold">
-								$ 599
+							&#x20b9; {value?.discounted_price}
 							</span>
 						</div>
 					</div>

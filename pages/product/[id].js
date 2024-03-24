@@ -1,7 +1,7 @@
 import SingleItem from "@/Components/SingleItem/SingleItem";
 import SwiperThumbs from "@/Components/Swiper/SwiperThumbs";
 import Layout from "@/Layout/Layout";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { HiOutlineShoppingCart } from "react-icons/hi"
 import { IoIosShareAlt } from 'react-icons/io'
 import { AiOutlineHeart } from "react-icons/ai";
@@ -15,44 +15,19 @@ import TabPanel from "@/Components/Tab/TabPanel";
 import { useRouter } from "next/router";
 import axios from "axios";
 import { env } from "@/next.config";
+import { colorMapping } from "@/utils/constant/constant";
 
 const TabPanelOption = [
     { label: "SPECIFICATION", component: Specification },
     { label: "DESCRIPTION", component: Description },
-    // { label: "WRITE REVIEW", component: WriteReview },
+    { label: "WRITE REVIEW", component: WriteReview },
     { label: "PRODUCTS TAGS", component: ProductTag },
 ]
-
-const colorMapping = {
-    1: "Berry",
-    2: "Black",
-    3: "Blue",
-    4: "Brown",
-    5: "Gold",
-    6: "Green",
-    7: "Multicolor",
-    8: "Pink",
-    9: "Purple",
-    10: "Silver",
-    11: "Smoke",
-    12: "Wine",
-    13: "Yellow",
-    14: "Other Multi-Colour",
-    15: "Gun Metal",
-    16: "Transparent White",
-    17: "Matte",
-    18: "Printed",
-    19: "Double Shade",
-    20: "Gradient colour",
-    21: "Matte Black",
-    22: "Matte gray",
-    23: "Transparent other",
-};
 
 const SingleProduct = () => {
     const [isOpen, setIsOpen] = React.useState(false);
     const [productData, setProductdata] = React.useState(null);
-    const {BASE_URL} = env
+    const { BASE_URL } = env
     const router = useRouter();
     const { id } = router.query;
     const phoneNumber = "9097773221";
@@ -67,6 +42,7 @@ const SingleProduct = () => {
         `Hello! I'm interested in this one! ${BASE_URL}${productURL}`
     );
     const whatsappLinkToShare = `https://wa.me/?text=${messageToShare}`;
+
     useEffect(() => {
         if (id) {
             const fetchProductData = async () => {
@@ -83,23 +59,19 @@ const SingleProduct = () => {
             fetchProductData();
         }
     }, [id]);
-    const [value, setValue]= useState([])
 
     const addToCart = (productId, isLens = false) => {
         // Construct the object based on whether it's a lens or product
-            setValue([...value, {
-                Productid: productId
-            }])
-         localStorage.setItem("Productid",JSON.stringify([...value, { Productid: productId }]));
-        // value = JSON.parse(value)
-        // const postData = { p_id: productId };
-        // axios
-        //     .post(`${BASE_URL}cart`, postData, {
-        //         headers: {
-        //             authorization: `Bearer ${value} `,
-        //         },
-        //     })
-        //     .then((result) => console.log(result?.data, "result?.data"));
+        let value = localStorage.getItem("user_info");
+        value = JSON.parse(value)
+        const postData = { p_id: productId };
+        axios
+            .post(`${BASE_URL}cart`, postData, {
+                headers: {
+                    authorization: `Bearer ${value} `,
+                },
+            })
+            .then((result) => console.log(result?.data, "result?.data"));
     };
 
     const SingleItemData = [
@@ -155,8 +127,8 @@ const SingleProduct = () => {
                                 </div>
                                 <span>Medium (134 mm)</span>
                             </div>
-                            {/* <div className="flex items-center justify-between">
-                                {SingleItemData.map((item, index) => {
+                            <div className="flex items-center justify-between">
+                                {SingleItemData?.map((item, index) => {
                                     return (
                                         <>
                                             <div key={index}>
@@ -165,7 +137,7 @@ const SingleProduct = () => {
                                         </>
                                     );
                                 })}
-                            </div> */}
+                            </div>
                         </div>
 
                         {/* Buttons  */}
@@ -218,20 +190,20 @@ const SingleProduct = () => {
                 </div>
 
                 {/* Related Product  */}
-                {/* <div className="flex flex-col gap-1 py-2">
+                <div className="flex flex-col gap-1 py-2">
                     <p className="text-xl font-bold px-6">
                         <span className="border-b-2 rounded-full border-spacing-1 border-gray-500 px-2 py-1">Related Products</span>
                     </p>
                     <SwiperContainer />
-                </div> */}
+                </div>
 
                 <div className="h-[35rem] grid grid-cols-7 gap-2">
                     <div className="col-span-5 shadow-md pr-2">
                         <TabPanel TabPanelOption={TabPanelOption} TableData={productData} />
                     </div>
-                    {/* <div className="col-span-2">
+                    <div className="col-span-2">
                         Images
-                    </div> */}
+                    </div>
                 </div>
             </section>
         </Layout>

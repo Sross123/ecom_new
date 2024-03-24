@@ -3,32 +3,20 @@ import Slider from "@/Components/Swiper/Slider";
 import SwiperContainer from "@/Components/Swiper/SwiperContainer";
 import Layout from "@/Layout/Layout";
 import Image from "next/image";
-import { env } from "@/next.config";
-import { useState, useEffect } from "react";
-import axios from "axios";
 
 export default function Home() {
-  const {BASE_URL} = env
-  const [category, setCategory] = useState();
-
-  const fetchCategory = async () => {
-    const res = await axios.get(`${BASE_URL}categories`);
-    setCategory(res.data.data);
-  };
-
-  useEffect(() => {
-    fetchCategory();
-  }, []);
   return (
     <Layout>
       <section className="flex flex-col h-auto gap-7">
-        <GlassesType categoryItems={category} />
-        <div >
+        <div className="px-10">
+          <GlassesType />
+        </div>
+        <div>
           <p className="  text-5xl text-center">EYEGLASSES
-         
+
           </p>
           <p className=" text-center  text-5xl  font-semibold mb-5">TREND</p>
-          <Slider/>
+          <Slider />
         </div>
 
         <div className="w-full">

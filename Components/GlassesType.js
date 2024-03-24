@@ -2,12 +2,16 @@ import Image from 'next/image'
 import React from 'react'
 import { motion } from "framer-motion"
 import { useRouter } from 'next/router';
+import useGetAllCategories from '@/utils/queries/useCategoriesGetAll';
+import { imageUrl } from '@/utils/constant/constant';
 
-const GlassesType = ({ categoryItems }) => {
+const GlassesType = () => {
     const router = useRouter();
+    const {data:categoryItems} = useGetAllCategories()
     const handleNavigate = (item) => {
-        router.push(`${item.name.toLowerCase()}`);
+        router.push(`${item?.name?.toLowerCase()}`);
     };
+    console.log(categoryItems, 'categoryItems')
     return (
         <motion.div className='w-full flex items-center gap-5 mt-6 justify-between cursor-pointer'>
             {
@@ -19,10 +23,10 @@ const GlassesType = ({ categoryItems }) => {
                                     src={`/product_images/${item?.image}`}
                                     width={130}
                                     height={130}
-                                    alt="Glass Type"
+                                    alt="Glasses Categories"
                                 />
                             </motion.div>
-                            <p className='text-sm font-semibold tracking-wide mt-2'>{item.name}</p>
+                            <p className='text-sm font-semibold tracking-wide mt-2'>{item?.name}</p>
                         </div>
                     )
                 })
